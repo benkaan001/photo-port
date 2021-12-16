@@ -1,37 +1,29 @@
-// __tests__/Nav.test.js with hard coded categories
-import React from 'react';
-import { render, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Nav from '..';
+// __tests__/Contact.test.js
+import React from 'react'
+import { render, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import Contact from '..'
 
-afterEach(cleanup);
+afterEach(cleanup)
 
-describe('Nav component renders', () => {
+describe('Contact component', () => {
   it('renders', () => {
-    render(<Nav />);
+    render(<Contact />);
   });
 
-  it('matches snapshot', () => {
-    const { asFragment } = render(<Nav />);
-    
-    expect(asFragment()).toMatchSnapshot();
-  });
+  it('renders', () => {
+    const { asFragment } = render(<Contact />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 })
 
-describe('emoji is visible', () => {
-  it('inserts emoji into the h2', () => {
-  const { getByLabelText } = render(<Nav />);
 
-  expect(getByLabelText('camera')).toHaveTextContent('📸');
-  });
-})  
+it('renders', () => {
+  const { getByTestId } = render(<Contact />)
+  expect(getByTestId('h1tag')).toHaveTextContent('Contact me')
+})
 
-describe('links are visible', () => {
-  it('inserts text into the links', () => {
-    const { getByTestId } = render(<Nav />);
-
-    expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
-    expect(getByTestId('about')).toHaveTextContent('About me');
-  });
-
+it('renders', () => {
+  const { getByTestId } = render(<Contact />)
+  expect(getByTestId('button')).toHaveTextContent('Submit')
 })
